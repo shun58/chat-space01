@@ -1,32 +1,35 @@
 # README
 
-## USERテーブル（アカウント登録）
+## USERSテーブル（アカウント登録）
 |Column|Type|Options|
 |------|----|-------|
-|username|string|null: false|
+|name|string|null: false|
 |email|string|null: false|
 |password|string|null: false|
 ### Association
-- has_many :message
-- has_many :group, through :user_group
+- has_many :messages
+- has_many :groups, through :user_group
+- has_many :user_groups
 
 ## MESSAGEテーブル（チャットメッセージ）
 |Column|Type|Options|
 |------|----|-------|
-|image|string|null: true|
-|text|text|null: false|
+|image|string|
+|text|text|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :group
+- belongs_to :group
 
 ## GROUPテーブル（チャットグループ）
 |Column|Type|Options|
 |------|----|-------|
-|groupname|text|null: false, foreign key: true|
+|name|string|null: false|
 |groupmember|integer|null: false, foreign key: true|
 ### Association
 - belongs_to :message
-- has_many :user, through :user_group
+- has_many :users, through :user_group
 
 ## USER_GROUPテーブル
 |Column|Type|Options|
