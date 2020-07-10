@@ -26,9 +26,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|groupmember|integer|null: false, foreign key: true|
 ### Association
-- belongs_to :message
+- has_many :messages
 - has_many :users, through :user_group
 
 ## USER_GROUPテーブル
