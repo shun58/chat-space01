@@ -8,10 +8,10 @@
 |password|string|null: false|
 ### Association
 - has_many :messages
-- has_many :groups, through :user_group
+- has_many :groups, through :user_groups
 - has_many :user_groups
 
-## MESSAGEテーブル（チャットメッセージ）
+## MESSAGESテーブル（チャットメッセージ）
 |Column|Type|Options|
 |------|----|-------|
 |image|string|
@@ -22,15 +22,16 @@
 - belongs_to :user
 - belongs_to :group
 
-## GROUPテーブル（チャットグループ）
+## GROUPSテーブル（チャットグループ）
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 ### Association
 - has_many :messages
-- has_many :users, through :user_group
+- has_many :users, through :user_groups
+- has_many :user_groups
 
-## USER_GROUPテーブル
+## USER_GROUPSテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign key: true|
